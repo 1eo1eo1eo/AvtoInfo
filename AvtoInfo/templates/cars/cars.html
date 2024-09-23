@@ -8,9 +8,8 @@
     <ul>
         {% for car in cars %}
             <li>
-                <a href="{% url '' car.id %}">{{ car.make }} {{ car.model }} ({{ car.year }})</a>
+                <a href="#">{{ car.make }} {{ car.model }} ({{ car.year }})</a>
             </li>
         {% endfor %}
     </ul>
-    <a href="{% url 'car_create' %}">Добавить машину</a>
 {% endblock %}
