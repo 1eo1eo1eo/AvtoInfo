@@ -1,0 +1,22 @@
+services:
+  db:
+    container_name: avtoinfo
+    image: postgres:15
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=avtoinfo
+    restart: always
+    ports:
+      - "5433:5433"
+    networks:
+      - app-network
+    volumes:
+      - app:/data/avtoinfo
+
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  app:
