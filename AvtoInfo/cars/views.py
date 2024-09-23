@@ -11,7 +11,6 @@ if TYPE_CHECKING:
 
 def cars(request: "HttpRequest") -> "HttpResponse":
 
-    page = request.GET.get("page", 1)
     queryset = Car.objects.order_by("id")
 
     context: dict = {
