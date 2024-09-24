@@ -1,12 +1,13 @@
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
-from . import views
+from cars import views
+from cars import views_api
 
 
 app_name = "cars"
 
 router = DefaultRouter()
-router.register(r"cars", views.CarViewSet)
+router.register(r"cars", views_api.CarViewSet)
 
 urlpatterns = [
     path("", views.get_cars, name="home"),

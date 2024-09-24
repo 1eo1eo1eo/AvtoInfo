@@ -2,51 +2,15 @@ from typing import TYPE_CHECKING
 
 from django.http import HttpResponseRedirect
 from django.urls import reverse
-from rest_framework import viewsets
-from rest_framework.permissions import IsAuthenticatedOrReadOnly
 from django.shortcuts import get_object_or_404, redirect
-from rest_framework.response import Response
-from rest_framework.decorators import action
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
 
-from cars.serializers import CarSerializer, CommentSerializer
 from cars.models import Car, Comment
 from cars.forms import CarForm
 
 if TYPE_CHECKING:
     from django.http import HttpRequest, HttpResponse
-
-
-class CarViewSet(viewsets.ModelViewSet):
-    """
-    ViewSet для работы с API.
-    """
-
-    queryset = Car.objects.all()
-    serializer_class = CarSerializer
-    permission = IsAuthenticatedOrReadOnly
-
-    @action(detail=True, methods=["get"])
-    def comments(self, request, pk=None):
-        car = self.get_object()
-        comments = Comment.objects.filter(car=car)
-        serializer = CommentSerializer(comments, many=True)
-
-        return Response(serializer.data)
-
-    @action(detail=True, methods=["post"])
-    def add_comment(self, request, pk=None):
-        car = self.get_object()
-        content = request.data.get("content")
-        comment = Comment.objects.create(
-            content=content,
-            car=car,
-            author=request.user,
-        )
-        serializer = CommentSerializer(comment)
-
-        return Response(serializer.data)
 
 
 def get_cars(request: "HttpRequest") -> "HttpResponse":
@@ -97,6 +61,10 @@ def car_detail(request, car_id):
 
     if request.method == "POST":
         content = request.POST.get("content")
+
+        if not request.user.is_authenticated:
+            return redirect("users:login")
+
         Comment.objects.create(
             content=content,
             car=car,
