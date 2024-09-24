@@ -1,5 +1,6 @@
 #!/bin/sh
 
+
 cd app
 
 cd AvtoInfo
