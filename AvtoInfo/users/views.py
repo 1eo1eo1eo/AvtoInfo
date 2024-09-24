@@ -11,6 +11,7 @@ from users.forms import (
     UserRegistrationForm,
     UserProfileForm,
 )
+from users.utils import select_user_cars
 
 if TYPE_CHECKING:
     from django.http import HttpResponse, HttpRequest
@@ -67,6 +68,7 @@ def registration(request: "HttpRequest") -> "HttpResponse":
 @login_required
 def profile(request: "HttpRequest") -> "HttpResponse":
 
+    queryset = select_user_cars(request)
     if request.method == "POST":
         form = UserProfileForm(
             data=request.POST,
@@ -85,6 +87,7 @@ def profile(request: "HttpRequest") -> "HttpResponse":
 
     context = {
         "title": "AvtoInfo - Profile",
+        "user_cars": queryset,
         "form": form,
     }
 
