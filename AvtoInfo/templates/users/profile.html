@@ -43,7 +43,11 @@
                     <div class="accordion" id="accordionExample">
                         <div class="accordion-item">
                             <h3 class="text-center mb-4">Ваши машины</h3>
-                            Машина
+                            {% for car in user_cars %}
+                            <li>
+                                <a>{{ car.make }} {{ car.model }} ({{ car.year }})</a>
+                            </li>
+                        {% endfor %}
                         </div>
                     </div>
                 </div>
