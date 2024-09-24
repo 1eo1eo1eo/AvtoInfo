@@ -36,7 +36,7 @@ class Car(models.Model):
         verbose_name_plural: str = "Cars"
 
     def __str__(self):
-        return f"{self.make} {self.model} {self.year}"
+        return f"{self.make} {self.model} {self.year}; Owner: {self.owner}"
 
 
 class Comment(models.Model):
