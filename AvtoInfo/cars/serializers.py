@@ -15,6 +15,7 @@ class CarSerializer(serializers.ModelSerializer):
             "created_at",
             "updated_at",
         ]
+        read_only_fields = ["owner"]
 
 
 class CommentSerializer(serializers.ModelSerializer):
@@ -27,3 +28,4 @@ class CommentSerializer(serializers.ModelSerializer):
             "author",
             "created_at",
         ]
+        read_only_fields = ["author"]
