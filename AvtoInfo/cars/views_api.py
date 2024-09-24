@@ -1,5 +1,5 @@
 from rest_framework import viewsets
-from rest_framework.permissions import IsAuthenticatedOrReadOnly
+from rest_framework.permissions import IsAuthenticated
 from rest_framework.exceptions import PermissionDenied
 from rest_framework.response import Response
 from rest_framework.decorators import action
@@ -15,7 +15,7 @@ class CarViewSet(viewsets.ModelViewSet):
 
     queryset = Car.objects.all()
     serializer_class = CarSerializer
-    permission = IsAuthenticatedOrReadOnly
+    permission = IsAuthenticated
 
     def perform_create(self, serializer):
         serializer.save(owner=self.request.user)
