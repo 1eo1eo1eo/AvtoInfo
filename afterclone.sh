@@ -1,5 +1,7 @@
 docker compose -f docker-compose-dev.yaml up -d --build
 
+poetry run pip install -r requirements.txt
+
 cd AvtoInfo
 
 poetry run python3 manage.py migrate
