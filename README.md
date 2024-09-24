@@ -11,7 +11,6 @@
 
 - [Git](https://git-scm.com/)
 - [Docker](https://www.docker.com/)
-- [Poetry](https://python-poetry.org/)
 ```
 
 
