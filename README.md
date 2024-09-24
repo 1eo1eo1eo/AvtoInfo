@@ -8,10 +8,10 @@
 ### Предварительные требования
 ```
 Перед началом работы убедитесь, что на вашем компьютере установлены следующие инструменты:
-
+```
 - [Git](https://git-scm.com/)
 - [Docker](https://www.docker.com/)
-```
+
 
 
 ### Установка
@@ -61,6 +61,9 @@ default user:
     username: user    
     password: useruser1        
 ```
+
+- [http://127.0.0.1:8000/](http://127.0.0.1:8000/) или 
+[http://localhost:8000/](http://localhost:8000/)
 
 **Для остановки приложения запустите следующую команду:**
 ```bash
@@ -141,7 +144,7 @@ scripts/stop.sh
 
 5. Удаление автомобиля:
 
-    1.Метод: DELETE 
+    1.Метод: DELETE     
     2.URL: http://127.0.0.1:8000/api/cars/< id >/   
     3.Authorization:    
     4.Auth Type - Basic Auth    
