@@ -2,7 +2,7 @@ from typing import TYPE_CHECKING
 
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect
-from django.shortcuts import render, redirect
+from django.shortcuts import get_object_or_404, render, redirect
 from django.urls import reverse
 from django.contrib import auth
 
@@ -11,7 +11,7 @@ from users.forms import (
     UserRegistrationForm,
     UserProfileForm,
 )
-from users.utils import select_user_cars
+from cars.models import Car
 
 if TYPE_CHECKING:
     from django.http import HttpResponse, HttpRequest
@@ -68,7 +68,7 @@ def registration(request: "HttpRequest") -> "HttpResponse":
 @login_required
 def profile(request: "HttpRequest") -> "HttpResponse":
 
-    queryset = select_user_cars(request)
+    user_cars = Car.objects.filter(owner=request.user)
     if request.method == "POST":
         form = UserProfileForm(
             data=request.POST,
@@ -78,16 +78,14 @@ def profile(request: "HttpRequest") -> "HttpResponse":
         if form.is_valid():
             form.save()
 
-            user = form.instance
-            auth.login(request, user)
-
             return HttpResponseRedirect(reverse("users:profile"))
+
     else:
         form = UserProfileForm(instance=request.user)
 
     context = {
         "title": "AvtoInfo - Profile",
-        "user_cars": queryset,
+        "user_cars": user_cars,
         "form": form,
     }
 
