@@ -38,22 +38,25 @@
                     </form>
                 </div>
             </div>
-                <!-- Разметка машин пользователя -->
-                <div class="container">
-                    <div class="accordion" id="accordionExample">
-                        <div class="accordion-item">
-                            <h3 class="text-center mb-4">Ваши машины</h3>
-                            {% for car in user_cars %}
-                            <li>
-                                <a>{{ car.make }} {{ car.model }} ({{ car.year }})</a>
-                            </li>
-                        {% endfor %}
-                        </div>
-                    </div>
-                </div>
-                <!-- Закончилась разметка машин пользователя -->
-            </div>
         </div>
+            <div class="container mt-5">
+                <h3 class="text-center mb-4">Ваши машины</h3>
+                <div>
+                    {% for car in user_cars %}
+                    <div>
+                        <h2 id="heading{{ car.id }}">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span>{{ car.make }} {{ car.model }} ({{ car.year }})</span>
+                                <div>
+                                    <a href="{% url 'cars:edit_car' car.id %}" class="btn btn-warning">Редактировать</a>
+                                    <a href="{% url 'cars:delete_car' car.id %}" class="btn btn-danger" onclick="return confirm('Вы уверены, что хотите удалить машину?')">Удалить</a>
+                                </div>
+                            </div>
+                        </h2>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
     </div>
 </div>
 {% endblock content %}
