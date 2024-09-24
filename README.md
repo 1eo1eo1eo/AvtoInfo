@@ -51,9 +51,12 @@ scripts/start.sh
 ```
 После успешного выполнения скрипта сервер разработки будет запущен,
 и вы сможете открыть приложение в браузере по следующему адресу:
+```
 
-http://127.0.0.1:8000/ или http://localhost:8000/
+- [http://127.0.0.1:8000/](http://127.0.0.1:8000/) или 
+[http://localhost:8000/](http://localhost:8000/)
 
+```
 superuser:    
     username: admin    
     password: 1    
@@ -61,9 +64,6 @@ default user:
     username: user    
     password: useruser1        
 ```
-
-- [http://127.0.0.1:8000/](http://127.0.0.1:8000/) или 
-[http://localhost:8000/](http://localhost:8000/)
 
 **Для остановки приложения запустите следующую команду:**
 ```bash
