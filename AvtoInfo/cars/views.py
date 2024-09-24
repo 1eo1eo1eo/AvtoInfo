@@ -30,7 +30,7 @@ def get_cars(request: "HttpRequest") -> "HttpResponse":
 @login_required
 def add_car(request: "HttpRequest") -> "HttpResponse":
     """
-    Представление для добавления новой машины.
+    Представление для добавления новой машины
     """
 
     if request.method == "POST":
@@ -84,7 +84,7 @@ def car_detail(request, car_id):
 @login_required
 def edit_car(request, car_id):
     """
-    Представление для изменеия данных машины
+    Представление для изменеия данных о машине
     """
 
     car = get_object_or_404(
