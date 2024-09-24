@@ -60,6 +60,7 @@ http://127.0.0.1:8000/ или http://localhost:8000/
 # Тестирование API с помощью Postman
 
     Установка Postman: https://www.postman.com/downloads/
+    Запустите сервер django перед тестированием
 
 
 Тестирование API-ручек
