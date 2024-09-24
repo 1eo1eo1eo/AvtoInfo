@@ -29,8 +29,9 @@ def login(request: "HttpRequest") -> "HttpResponse":
 
             if user:
                 auth.login(request, user)
-
                 return HttpResponseRedirect(reverse("cars:home"))
+            else:
+                form.add_error(None, "Неверный логин или пароль")
     else:
         form = UserLoginForm()
 
