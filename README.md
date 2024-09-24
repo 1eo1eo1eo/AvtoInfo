@@ -53,6 +53,11 @@ scripts/start.sh
 и вы сможете открыть приложение в браузере по следующему адресу:
 
 http://127.0.0.1:8000/ или http://localhost:8000/
+
+superuser: username: admin    
+           password: 1
+default user: username: user
+              password: useruser1    
 ```
 
 **Для остановки приложения запустите следующую команду:**
